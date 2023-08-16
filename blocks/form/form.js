@@ -92,8 +92,8 @@ function createHelpText(fd) {
 function createFieldWrapper(fd, tagName = "div") {
   const fieldWrapper = document.createElement(tagName);
   if (fd.Type !== 'radio') {
-    fieldWrapper.setAttribute('itemtype', 'urn:fnk:type/component');
-    fieldWrapper.setAttribute('itemid', generateItemId(fd.Name));
+    fieldWrapper.setAttribute('itemtype', 'component');
+    fieldWrapper.setAttribute('itemid', generateItemId(fd.Id));
     fieldWrapper.setAttribute('itemscope', '');
   }
   const nameStyle = fd.Name ? ` form-${fd.Name}` : "";
@@ -369,20 +369,21 @@ function topFormExpressBox() {
   return formExpressBoxDiv;
 }
 
-function generateItemId(name) {
-  if (name) {
-    return `urn:fnkconnection:${window.formPath}:default:Name:${name}`;
+function generateItemId(id) {
+  if (id) {
+    return `urn:fnkconnection:${window.formPath}:default:Id:${id}`;
   } else {
     return `urn:fnkconnection:${window.formPath}:default`;
   }
 }
 
 export default async function decorate(block) {
-  block.setAttribute('itemtype', 'urn:fnk:type/form');
   const formLink = block.querySelector('a[href$=".json"]');
   if (formLink) {
     const form = await createForm(formLink.href);
-    block.setAttribute('itemid', generateItemId());
+    form.setAttribute('itemid', generateItemId());
+    form.setAttribute('itemtype', 'container');
+    form.setAttribute('itemscope', '');
     formLink.replaceWith(form);
   }
 }
