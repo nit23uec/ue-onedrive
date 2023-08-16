@@ -95,6 +95,7 @@ function createFieldWrapper(fd, tagName = "div") {
     fieldWrapper.setAttribute('itemtype', 'component');
     fieldWrapper.setAttribute('itemid', generateItemId(fd.Id));
     fieldWrapper.setAttribute('itemscope', '');
+    fieldWrapper.setAttribute('data-editor-itemlabel', fd.Label || fd.Name);
   }
   const nameStyle = fd.Name ? ` form-${fd.Name}` : "";
   const fieldId = `form-${fd.Type}-wrapper${nameStyle}`;
@@ -384,6 +385,7 @@ export default async function decorate(block) {
     form.setAttribute('itemid', generateItemId());
     form.setAttribute('itemtype', 'container');
     form.setAttribute('itemscope', '');
+    form.setAttribute('data-editor-itemlabel', "Form Container");
     formLink.replaceWith(form);
   }
 }
