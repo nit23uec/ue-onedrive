@@ -92,7 +92,7 @@ function createHelpText(fd) {
 function createFieldWrapper(fd, tagName = "div") {
   const fieldWrapper = document.createElement(tagName);
   if (fd.Type !== 'radio') {
-    fieldWrapper.setAttribute('itemtype', 'urn:fnk:type/component');
+    fieldWrapper.setAttribute('itemtype', 'component');
     fieldWrapper.setAttribute('itemid', generateItemId(fd.Name));
     fieldWrapper.setAttribute('itemscope', '');
   }
@@ -382,6 +382,9 @@ export default async function decorate(block) {
   const formLink = block.querySelector('a[href$=".json"]');
   if (formLink) {
     const form = await createForm(formLink.href);
+    form.setAttribute('itemtype', 'container');
+    form.setAttribute('itemid', generateItemId());
+    form.setAttribute('itemscope', '');
     block.setAttribute('itemid', generateItemId());
     formLink.replaceWith(form);
   }
