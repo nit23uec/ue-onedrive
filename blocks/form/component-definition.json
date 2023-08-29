@@ -17,7 +17,6 @@
                     },
                     "model": {
                         "id": "text",
-                        "uri": "/text-input",
                         "fields": [
                             {
                                 "component": "text-input",
@@ -62,6 +61,26 @@
                                 "name": "Mandatory",
                                 "label": "Required",
                                 "valueType": "boolean"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Value",
+                                "label": "Default Value",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "number",
+                                "name": "Min",
+                                "label": "Minimum Value",
+                                "valueType": "number",
+                                "description": "Minimum length of the text in the field"
+                            },
+                            {
+                                "component": "number",
+                                "name": "Max",
+                                "label": "Maximum Value",
+                                "valueType": "number",
+                                "description": "Maximum length of the text in the field"
                             }
                         ]
                     }
@@ -78,7 +97,6 @@
                         }
                     },
                     "model": {
-                        "uri": "",
                         "id": "number",
                         "fields": [
                             {
@@ -159,7 +177,6 @@
                         }
                     },
                     "model": {
-                        "uri": "",
                         "id": "date",
                         "fields": [
                             {
@@ -242,7 +259,6 @@
                         }
                     },
                     "model": {
-                        "uri": "",
                         "id": "select",
                         "fields": [
                             {
@@ -312,7 +328,6 @@
                         }
                     },
                     "model": {
-                        "uri": "",
                         "id": "checkbox-group",
                         "fields": [
                             {
@@ -382,7 +397,6 @@
                         }
                     },
                     "model": {
-                        "uri": "",
                         "id": "radio-group",
                         "fields": [
                             {
@@ -451,7 +465,6 @@
                         }
                     },
                     "model": {
-                        "uri": "/button",
                         "id": "button",
                         "fields": [
                             {
@@ -508,7 +521,6 @@
                         }
                     },
                     "model": {
-                        "uri": "/file-input",
                         "id": "file",
                         "fields": [
                             {
