@@ -17,14 +17,51 @@
                     },
                     "model": {
                         "id": "text",
-                        "uri": "",
+                        "uri": "/text-input",
                         "fields": [
                             {
                                 "component": "text-input",
-                                "name": "text",
-                                "value": "Text",
-                                "label": "Text",
+                                "name": "Name",
+                                "label": "Name",
+                                "valueType": "string",
+                                "required": true
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Label",
+                                "label": "Label",
                                 "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Description",
+                                "label": "Description",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Placeholder",
+                                "label": "Placeholder",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Hidden",
+                                "label": "Hidden",
+                                "valueType": "boolean"
+                            },
+                            {
+
+                                "component": "boolean",
+                                "name": "Read Only",
+                                "label": "Read Only",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Mandatory",
+                                "label": "Required",
+                                "valueType": "boolean"
                             }
                         ]
                     }
@@ -42,14 +79,70 @@
                     },
                     "model": {
                         "uri": "",
-                        "id": "title",
+                        "id": "number",
                         "fields": [
                             {
                                 "component": "text-input",
-                                "name": "text",
-                                "value": "Title",
-                                "label": "Title",
+                                "name": "Name",
+                                "label": "Name",
+                                "valueType": "string",
+                                "required": true
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Label",
+                                "label": "Label",
                                 "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Description",
+                                "label": "Description",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Placeholder",
+                                "label": "Placeholder",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Hidden",
+                                "label": "Hidden",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Read Only",
+                                "label": "Read Only",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Mandatory",
+                                "label": "Required",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "number",
+                                "name": "Value",
+                                "label": "Default Value",
+                                "valueType": "number"
+                            },
+                            {
+                                "component": "number",
+                                "name": "Min",
+                                "label": "Minimum Value",
+                                "valueType": "number",
+                                "description": "Minimum value of the number allowed in the field"
+                            },
+                            {
+                                "component": "number",
+                                "name": "Max",
+                                "label": "Maximum Value",
+                                "valueType": "number",
+                                "description": "Maximum value of the number allowed in the field"
                             }
                         ]
                     }
@@ -67,14 +160,71 @@
                     },
                     "model": {
                         "uri": "",
-                        "id": "title",
+                        "id": "date",
                         "fields": [
                             {
                                 "component": "text-input",
-                                "name": "text",
-                                "value": "Title",
-                                "label": "Title",
+                                "name": "Name",
+                                "label": "Name",
+                                "valueType": "string",
+                                "required": true
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Label",
+                                "label": "Label",
                                 "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Description",
+                                "label": "Description",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Placeholder",
+                                "label": "Placeholder",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Hidden",
+                                "label": "Hidden",
+                                "valueType": "boolean"
+                            },
+                            {
+
+                                "component": "boolean",
+                                "name": "Read Only",
+                                "label": "Read Only",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Mandatory",
+                                "label": "Required",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "number",
+                                "name": "Value",
+                                "label": "Default Value",
+                                "valueType": "number"
+                            },
+                            {
+                                "component": "date-time",
+                                "name": "Min",
+                                "label": "Minimum Value",
+                                "valueType": "date",
+                                "description": "Minimum value of the number allowed in the field"
+                            },
+                            {
+                                "component": "date-time",
+                                "name": "Max",
+                                "label": "Maximum Value",
+                                "valueType": "date",
+                                "description": "Maximum value of the number allowed in the field"
                             }
                         ]
                     }
@@ -93,14 +243,58 @@
                     },
                     "model": {
                         "uri": "",
-                        "id": "title",
+                        "id": "drop-down",
                         "fields": [
                             {
                                 "component": "text-input",
-                                "name": "text",
-                                "value": "Title",
-                                "label": "Title",
+                                "name": "Name",
+                                "label": "Name",
+                                "valueType": "string",
+                                "required": true
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Label",
+                                "label": "Label",
                                 "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Description",
+                                "label": "Description",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Placeholder",
+                                "label": "Placeholder",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Hidden",
+                                "label": "Hidden",
+                                "valueType": "boolean"
+                            },
+                            {
+
+                                "component": "boolean",
+                                "name": "Read Only",
+                                "label": "Read Only",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Mandatory",
+                                "label": "Required",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Options",
+                                "label": "Options",
+                                "valueType": "string",
+                                "multi": true
                             }
                         ]
                     }
@@ -119,14 +313,58 @@
                     },
                     "model": {
                         "uri": "",
-                        "id": "title",
+                        "id": "checkbox",
                         "fields": [
                             {
                                 "component": "text-input",
-                                "name": "text",
-                                "value": "Title",
-                                "label": "Title",
+                                "name": "Name",
+                                "label": "Name",
+                                "valueType": "string",
+                                "required": true
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Label",
+                                "label": "Label",
                                 "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Description",
+                                "label": "Description",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Placeholder",
+                                "label": "Placeholder",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Hidden",
+                                "label": "Hidden",
+                                "valueType": "boolean"
+                            },
+                            {
+
+                                "component": "boolean",
+                                "name": "Read Only",
+                                "label": "Read Only",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Mandatory",
+                                "label": "Required",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Options",
+                                "label": "Options",
+                                "valueType": "string",
+                                "multi": true
                             }
                         ]
                     }
@@ -149,10 +387,54 @@
                         "fields": [
                             {
                                 "component": "text-input",
-                                "name": "text",
-                                "value": "Title",
-                                "label": "Title",
+                                "name": "Name",
+                                "label": "Name",
+                                "valueType": "string",
+                                "required": true
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Label",
+                                "label": "Label",
                                 "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Description",
+                                "label": "Description",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Placeholder",
+                                "label": "Placeholder",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Hidden",
+                                "label": "Hidden",
+                                "valueType": "boolean"
+                            },
+                            {
+
+                                "component": "boolean",
+                                "name": "Read Only",
+                                "label": "Read Only",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Mandatory",
+                                "label": "Required",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Options",
+                                "label": "Options",
+                                "valueType": "string",
+                                "multi": true
                             }
                         ]
                     }
@@ -169,15 +451,46 @@
                         }
                     },
                     "model": {
-                        "uri": "",
-                        "id": "title",
+                        "uri": "/button",
+                        "id": "button",
                         "fields": [
                             {
                                 "component": "text-input",
-                                "name": "text",
-                                "value": "Title",
-                                "label": "Title",
+                                "name": "Name",
+                                "label": "Name",
+                                "valueType": "string",
+                                "required": true
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Label",
+                                "label": "Label",
                                 "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Description",
+                                "label": "Description",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Placeholder",
+                                "label": "Placeholder",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Hidden",
+                                "label": "Hidden",
+                                "valueType": "boolean"
+                            },
+                            {
+
+                                "component": "boolean",
+                                "name": "Read Only",
+                                "label": "Read Only",
+                                "valueType": "boolean"
                             }
                         ]
                     }
@@ -195,15 +508,64 @@
                         }
                     },
                     "model": {
-                        "uri": "",
-                        "id": "title",
+                        "uri": "/file-input",
+                        "id": "file",
                         "fields": [
                             {
                                 "component": "text-input",
-                                "name": "text",
-                                "value": "Title",
-                                "label": "Title",
+                                "name": "Name",
+                                "label": "Name",
+                                "valueType": "string",
+                                "required": true
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Label",
+                                "label": "Label",
                                 "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Description",
+                                "label": "Description",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Placeholder",
+                                "label": "Placeholder",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Hidden",
+                                "label": "Hidden",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Read Only",
+                                "label": "Read Only",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Mandatory",
+                                "label": "Required",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Multiple",
+                                "label": "Multiple",
+                                "valueType": "boolean"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Accept",
+                                "label": "Accept",
+                                "valueType": "string",
+                                "multi": true
                             }
                         ]
                     }
@@ -225,10 +587,35 @@
                         "fields": [
                             {
                                 "component": "text-input",
-                                "name": "text",
-                                "value": "Title",
-                                "label": "Title",
+                                "name": "Name",
+                                "label": "Name",
+                                "valueType": "string",
+                                "required": true
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Label",
+                                "label": "Label",
                                 "valueType": "string"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Description",
+                                "label": "Description",
+                                "valueType": "string"
+                            },
+                            {
+                                "component": "boolean",
+                                "name": "Hidden",
+                                "label": "Hidden",
+                                "valueType": "boolean"
+                            },
+                            {
+
+                                "component": "boolean",
+                                "name": "Read Only",
+                                "label": "Read Only",
+                                "valueType": "boolean"
                             }
                         ]
                     }
