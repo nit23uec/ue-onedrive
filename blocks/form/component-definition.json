@@ -243,7 +243,7 @@
                     },
                     "model": {
                         "uri": "",
-                        "id": "drop-down",
+                        "id": "select",
                         "fields": [
                             {
                                 "component": "text-input",
@@ -313,7 +313,7 @@
                     },
                     "model": {
                         "uri": "",
-                        "id": "checkbox",
+                        "id": "checkbox-group",
                         "fields": [
                             {
                                 "component": "text-input",
@@ -383,7 +383,7 @@
                     },
                     "model": {
                         "uri": "",
-                        "id": "title",
+                        "id": "radio-group",
                         "fields": [
                             {
                                 "component": "text-input",
@@ -582,8 +582,7 @@
                         }
                     },
                     "model": {
-                        "uri": "",
-                        "id": "title",
+                        "id": "fieldset",
                         "fields": [
                             {
                                 "component": "text-input",
