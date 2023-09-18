@@ -1,5 +1,3 @@
-import componentDefinition from "./component-definition.json" assert { type: "json" };
-
 function constructPayload(form) {
   const payload = {};
   [...form.elements].forEach((fe) => {
@@ -392,10 +390,12 @@ function loadUEScripts() {
   ueEmbedded.src = "https://cdn.jsdelivr.net/gh/adobe/universal-editor-cors/dist/universal-editor-embedded.js";
   ueEmbedded.async = true;
   head.appendChild(ueEmbedded);
-  let componentDefinition = document.createElement("script");
-  componentDefinition.type =  "application/vnd.adobe.aem.editor.component-definition+json";
-  componentDefinition.src = "/blocks/form/component-definition.json";
-  head.appendChild(componentDefinition);
+  import("./component-definition.json", { assert: { type: "json" } }).then(() => {
+    let componentDefinition = document.createElement("script");
+    componentDefinition.type =  "application/vnd.adobe.aem.editor.component-definition+json";
+    componentDefinition.src = "/blocks/form/component-definition.json";
+    head.appendChild(componentDefinition);
+  });
 }
 
 export default async function decorate(block) {
