@@ -392,7 +392,7 @@ function loadUEScripts() {
   head.appendChild(ueEmbedded);
   let componentDefinition = document.createElement("script");
   componentDefinition.type =  "application/vnd.adobe.aem.editor.component-definition+json";
-  componentDefinition.src = "component-definition.json";
+  componentDefinition.src = "/blocks/form/component-definition.json";
   head.appendChild(componentDefinition);
 }
 
