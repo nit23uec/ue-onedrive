@@ -1,4 +1,4 @@
-import componentDefinition from "./component-definition.json";
+import componentDefinition from "./component-definition.json" assert { type: "json" };
 
 function constructPayload(form) {
   const payload = {};
