@@ -61,10 +61,8 @@ function createLabel(fd, tagName = "label") {
   label.setAttribute("for", fd.Id);
   label.className = "field-label";
   label.textContent = fd.Label || "";
-  if (fd.Type !== 'radio') {
-    label.setAttribute('itemprop', 'Label');
-    label.setAttribute('itemtype', 'text');
-  }
+  label.setAttribute('itemprop', 'Label');
+  label.setAttribute('itemtype', 'text');
   if (fd.Tooltip) {
     label.title = fd.Tooltip;
   }
@@ -91,13 +89,11 @@ function createHelpText(fd) {
 
 function createFieldWrapper(fd, tagName = "div") {
   const fieldWrapper = document.createElement(tagName);
-  if (fd.Type !== 'radio') {
-    fieldWrapper.setAttribute('itemtype', 'component');
-    fieldWrapper.setAttribute('itemid', generateItemId(fd.Id));
-    fieldWrapper.setAttribute('itemscope', '');
-    fieldWrapper.setAttribute('data-editor-itemlabel', fd.Label || fd.Name);
-    fieldWrapper.setAttribute('data-editor-itemmodel', fd.Type);
-  }
+  fieldWrapper.setAttribute('itemtype', 'component');
+  fieldWrapper.setAttribute('itemid', generateItemId(fd.Id));
+  fieldWrapper.setAttribute('itemscope', '');
+  fieldWrapper.setAttribute('data-editor-itemlabel', fd.Label || fd.Name);
+  fieldWrapper.setAttribute('data-editor-itemmodel', fd.Type);
   const nameStyle = fd.Name ? ` form-${fd.Name}` : "";
   const fieldId = `form-${fd.Type}-wrapper${nameStyle}`;
   fieldWrapper.className = fieldId;

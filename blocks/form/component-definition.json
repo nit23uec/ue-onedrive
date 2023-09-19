@@ -403,13 +403,13 @@
                         "fnk": {
                             "form": {
                                 "Type": "checkbox",
-                                "Label": "Check Box Group",
-                                "Options": ["Item 1", "Item 2"]
+                                "Label": "Check Box",
+                                "Value": "Checkbox Item"
                             }
                         }
                     },
                     "model": {
-                        "id": "checkbox-group",
+                        "id": "checkbox",
                         "fields": [
                             {
                                 "component": "text-input",
@@ -454,31 +454,24 @@
                                 "name": "Mandatory",
                                 "label": "Required",
                                 "valueType": "boolean"
-                            },
-                            {
-                                "component": "text-input",
-                                "name": "Options",
-                                "label": "Options",
-                                "valueType": "string",
-                                "multi": true
                             }
                         ]
                     }
                 },
                 {
                     "title": "Radio Button",
-                    "id": "radiogroup",
+                    "id": "radiobutton",
                     "plugins": {
                         "fnk": {
                             "form": {
                                 "Type": "radio",
                                 "Label": "Radio Button",
-                                "Options": ["Item 1", "Item 2"]
+                                "Value": "Radio Item"
                             }
                         }
                     },
                     "model": {
-                        "id": "radio-group",
+                        "id": "radio",
                         "fields": [
                             {
                                 "component": "text-input",
@@ -523,13 +516,6 @@
                                 "name": "Mandatory",
                                 "label": "Required",
                                 "valueType": "boolean"
-                            },
-                            {
-                                "component": "text-input",
-                                "name": "Options",
-                                "label": "Options",
-                                "valueType": "string",
-                                "multi": true
                             }
                         ]
                     }
@@ -745,7 +731,6 @@
                                 "valueType": "boolean"
                             },
                             {
-
                                 "component": "boolean",
                                 "name": "Read Only",
                                 "label": "Read Only",
