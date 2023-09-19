@@ -454,6 +454,12 @@
                                 "name": "Mandatory",
                                 "label": "Required",
                                 "valueType": "boolean"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Value",
+                                "label": "Value",
+                                "valueType": "string"
                             }
                         ]
                     }
@@ -516,6 +522,12 @@
                                 "name": "Mandatory",
                                 "label": "Required",
                                 "valueType": "boolean"
+                            },
+                            {
+                                "component": "text-input",
+                                "name": "Value",
+                                "label": "Value",
+                                "valueType": "string"
                             }
                         ]
                     }
