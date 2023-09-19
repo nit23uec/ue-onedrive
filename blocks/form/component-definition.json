@@ -698,7 +698,8 @@
                                 "name": "Accept",
                                 "label": "Accept",
                                 "valueType": "string",
-                                "multi": true
+                                "multi": true,
+                                "value": ["audio/*", "video/*", "image/*", "text/*", "application/pdf"]
                             }
                         ]
                     }
