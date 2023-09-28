@@ -401,6 +401,7 @@ export default async function decorate(block) {
     form.setAttribute('itemtype', 'container');
     form.setAttribute('itemscope', '');
     form.setAttribute('data-editor-itemlabel', "Form Container");
+    form.setAttribute('data-editor-itemmodel', "form");
     formLink.replaceWith(form);
   }
 }
