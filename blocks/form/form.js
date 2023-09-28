@@ -185,6 +185,7 @@ function createLegend(fd) {
 function createFieldSet(fd) {
   const wrapper = createFieldWrapper(fd, "fieldset");
   wrapper.setAttribute('itemtype', 'container');
+  wrapper.setAttribute('data-editor-behavior', 'component');
   wrapper.name = fd.Name;
   //   wrapper.replaceChildren(createLegend(fd));
   return wrapper;
