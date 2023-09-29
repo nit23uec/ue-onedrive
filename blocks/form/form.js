@@ -392,7 +392,7 @@ function loadUEScripts() {
   componentDefinition.src = `${window.origin}/blocks/form/component-definition.json`;
   head.appendChild(componentDefinition);
   document.addEventListener("editor-update", function (e){
-    console.log(e.details);
+    console.log(e.detail);
   },false);
 }
 
