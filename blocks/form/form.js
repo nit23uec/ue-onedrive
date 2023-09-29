@@ -391,6 +391,9 @@ function loadUEScripts() {
   componentDefinition.type =  "application/vnd.adobe.aem.editor.component-definition+json";
   componentDefinition.src = `${window.origin}/blocks/form/component-definition.json`;
   head.appendChild(componentDefinition);
+  document.addEventListener("editor-update", function (e){
+    console.log(e.details);
+  },false);
 }
 
 export default async function decorate(block) {
