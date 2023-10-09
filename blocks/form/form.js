@@ -394,8 +394,8 @@ function loadUEScripts() {
   head.appendChild(componentDefinition);
   document.addEventListener("editor-add", function (e){
     console.log(e.detail);
-    console.log(e.detail.component);
-    const el = renderField(e.detail.component.plugins.fnk.form);
+   const container = e.detail.container;
+   container.appendChild(renderField(e.detail.component.plugins.fnk.form));
   },false);
 }
 
