@@ -393,11 +393,14 @@ function loadUEScripts() {
   componentDefinition.src = `${window.origin}/blocks/form/component-definition.json`;
   head.appendChild(componentDefinition);
   document.addEventListener("editor-add", function (e){
-    console.log(e.detail);
    const container = e.detail.container;
    const itemidArray = e.detail.itemid.split(":");
    const id = itemidArray[itemidArray.length - 1];
    container.appendChild(renderField({ ...e.detail.component.plugins.fnk.form, "Id": id } ));
+  },false);
+  document.addEventListener("editor-update", function (e){
+    const itemids = e.detail.itemids;
+    console.log('itemids', itemids);
   },false);
 }
 
