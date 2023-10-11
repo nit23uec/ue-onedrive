@@ -200,7 +200,7 @@ function createRadio(fd) {
 
 function updateRadio(wrapper, fd) {
   const input = wrapper.querySelector('input');
-  updateInput(input, fd);
+  updateInputElement(input, fd);
 }
 
 const createOutput = withFieldWrapper((fd) => {
@@ -334,7 +334,7 @@ function updateField(fieldWrapper, fd) {
     updater(fieldWrapper, fd);
   } else {
     updateFieldWrapper(fieldWrapper, fd);
-    updateInput(fieldWrapper.querySelector('input'), fd);
+    updateInput(fieldWrapper, fd);
   }
   if (fd.Description) {
     updateHelpText(fieldWrapper, fd);
