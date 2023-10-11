@@ -510,10 +510,11 @@ function loadUEScripts() {
    container.appendChild(renderField({ ...e.detail.component.plugins.fnk.form, "Id": id } ));
   },false);
   document.addEventListener("editor-update", function (e){
-    ({itemids, element, content} = e.detail);
-    console.log('itemids', itemids);
+    console.log(e.detail);
+    //({itemids, element, content} = e.detail);
+    //console.log('itemids', itemids);
     //TODO: required attribute handling
-    updateField(element, content);
+    updateField(e.detail.element, e.detail.content);
   },false);
 }
 
