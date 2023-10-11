@@ -353,6 +353,7 @@ function updateField(fieldWrapper, fd) {
   } else {
     if (input !== null) {
       input.removeAttribute('required');
+      removeErrorText(fieldWrapper);
     } else {
       fieldWrapper.removeAttribute('required');
     }
@@ -366,8 +367,19 @@ function createErrorText(fd) {
   return div;
 }
 
+function removeErrorText(fieldWrapper) {
+  let div = fieldWrapper.querySelector(".field-required-error");
+  if (div) {
+    fieldWrapper.removeChild(div);
+  }
+}
+
 function updateErrorText(fieldWrapper, fd) {
-  const div = fieldWrapper.querySelector(".field-required-error");
+  let div = fieldWrapper.querySelector(".field-required-error");
+  if (!div) {
+    div = document.createElement("div");
+    div.className = "field-required-error";
+  }
   updateErrorTextElement(div, fd);
 }
 
