@@ -343,7 +343,7 @@ function updateField(fieldWrapper, fd) {
   if (fd.Type === "submit") {
     updateErrorText(fieldWrapper, content);
   }
-  if (fd.Mandatory && fd.Mandatory.toLowerCase() === "true") {
+  if (fd.Mandatory && String(fd.Mandatory).toLowerCase() === "true") {
     if (input !== null) {
       input.setAttribute("required", "required");
       updateErrorText(fieldWrapper, fd);
