@@ -60,20 +60,49 @@ function createLabel(fd, tagName = "label") {
   const label = document.createElement(tagName);
   label.setAttribute("for", fd.Id);
   label.className = "field-label";
+  updateLabelElement(label, fd);
+  if (fd.Mandatory && fd.Mandatory.toLowerCase() === "true") {
+    createRequiredTextSpan(label);    
+  }
+  return label;
+}
+
+function createRequiredTextSpan(label) {
+  const requiredTextSpan = document.createElement("span");
+  requiredTextSpan.className = "required-text";
+  requiredTextSpan.textContent = "  *";
+  label.append(requiredTextSpan);
+}
+
+
+function removeRequiredTextSpan(label) {
+  const requiredTextSpan = label.querySelector(".required-text");
+  if (requiredTextSpan) {
+    label.removeChild(requiredTextSpan);
+  }
+}
+
+function updateLabelElement(label, fd) {
   label.textContent = fd.Label || "";
   label.setAttribute('itemprop', 'Label');
   label.setAttribute('itemtype', 'text');
   if (fd.Tooltip) {
     label.title = fd.Tooltip;
   }
-  if (fd.Mandatory && fd.Mandatory.toLowerCase() === "true") {
-    const requiredTextSpan = document.createElement("span");
-    requiredTextSpan.className = "required-text";
-    requiredTextSpan.textContent = "  *";
-    label.append(requiredTextSpan);
-  }
+}
 
-  return label;
+function createOrUpdateLabel(fieldWrapper, fd) {
+  const label = fieldWrapper.querySelector(".field-label");
+  if (label) {
+    updateLabelElement(label, fd);
+    if (fd.Mandatory && String(fd.Mandatory).toLowerCase() === "true") {
+      createRequiredTextSpan(label);
+    } else {
+      removeRequiredTextSpan(label);
+    }
+  } else {
+    fieldWrapper.append(createLabel(fd));
+  }
 }
 
 function createHelpText(fd) {
@@ -100,7 +129,6 @@ function createFieldWrapper(fd, tagName = "div") {
   const fieldWrapper = document.createElement(tagName);
   fieldWrapper.classList.add("field-wrapper");
   updateFieldWrapper(fieldWrapper, fd);
-  fieldWrapper.append(createLabel(fd));
   return fieldWrapper;
 }
 
@@ -114,6 +142,7 @@ function updateFieldWrapper(fieldWrapper, fd) {
   const fieldId = `form-${fd.Type}-wrapper${nameStyle}`;
   fieldWrapper.className = fieldId;
   fieldWrapper.dataset.fieldset = fd.Fieldset ? fd.Fieldset : "";
+  createOrUpdateLabel(fieldWrapper, fd);
 }
 
 function createButton(fd) {
