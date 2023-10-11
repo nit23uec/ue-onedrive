@@ -350,6 +350,12 @@ function updateField(fieldWrapper, fd) {
     } else {
       fieldWrapper.setAttribute("required", "required");
     }
+  } else {
+    if (input !== null) {
+      input.removeAttribute('required');
+    } else {
+      fieldWrapper.removeAttribute('required');
+    }
   }
 }
 
