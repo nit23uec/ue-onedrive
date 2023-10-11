@@ -79,16 +79,32 @@ function createLabel(fd, tagName = "label") {
 function createHelpText(fd) {
   const div = document.createElement("div");
   div.className = "field-description";
+  updateHelpTextElement(div, fd);
+  return div;
+}
+
+function updateHelpText(fieldWrapper, fd) {
+  const div = fieldWrapper.querySelector(".field-description");
+  updateHelpTextElement(div, fd);
+}
+
+function updateHelpTextElement(div, fd) {
   div.setAttribute("aria-live", "polite");
   div.setAttribute('itemtype', 'text');
   div.setAttribute('itemprop', 'Description');
   div.innerText = fd.Description;
   div.id = `${fd.Id}-description`;
-  return div;
 }
 
 function createFieldWrapper(fd, tagName = "div") {
   const fieldWrapper = document.createElement(tagName);
+  fieldWrapper.classList.add("field-wrapper");
+  updateFieldWrapper(fieldWrapper, fd);
+  fieldWrapper.append(createLabel(fd));
+  return fieldWrapper;
+}
+
+function updateFieldWrapper(fieldWrapper, fd) {
   fieldWrapper.setAttribute('itemtype', 'component');
   fieldWrapper.setAttribute('itemid', generateItemId(fd.Id));
   fieldWrapper.setAttribute('itemscope', '');
@@ -98,30 +114,41 @@ function createFieldWrapper(fd, tagName = "div") {
   const fieldId = `form-${fd.Type}-wrapper${nameStyle}`;
   fieldWrapper.className = fieldId;
   fieldWrapper.dataset.fieldset = fd.Fieldset ? fd.Fieldset : "";
-  fieldWrapper.classList.add("field-wrapper");
-  fieldWrapper.append(createLabel(fd));
-  return fieldWrapper;
 }
 
 function createButton(fd) {
   const wrapper = createFieldWrapper(fd);
   const button = document.createElement("button");
+  button.classList.add("button");
+  wrapper.replaceChildren(button);
+  updateButton(wrapper, fd);
+  return wrapper;
+}
+
+function updateButton(wrapper, fd) {
+  const button = wrapper.querySelector('button');
   button.textContent = fd.Label;
   button.type = fd.Type;
-  button.classList.add("button");
   button.dataset.redirect = fd.Extra || "";
   button.id = fd.Id;
   button.name = fd.Name;
-  wrapper.replaceChildren(button);
-  return wrapper;
 }
 
 function createInput(fd) {
   const input = document.createElement("input");
+  updateInputElement(input, fd);
+  return input;
+}
+
+function updateInputElement(input, fd) {
   input.type = fd.Type;
   setPlaceholder(input, fd);
   setNumberConstraints(input, fd);
-  return input;
+}
+
+function updateInput(fieldWrapper, fd) {
+  const input = fieldWrapper.querySelector('input');
+  updateInputElement(input, fd);
 }
 
 const withFieldWrapper = (element) => (fd) => {
@@ -135,6 +162,12 @@ const createTextArea = withFieldWrapper((fd) => {
   setPlaceholder(input, fd);
   return input;
 });
+
+const updateTextArea = function(wrapper, fd) {
+  const input = wrapper.querySelector('textarea');
+  setPlaceholder(input, fd);
+  return input;
+};
 
 const createSelect = withFieldWrapper((fd) => {
   const select = document.createElement("select");
@@ -155,27 +188,49 @@ const createSelect = withFieldWrapper((fd) => {
   return select;
 });
 
+const updateSelect = function(fieldWrapper, fd) {
+  console.log('updateSelect no-op');
+}
+
 function createRadio(fd) {
   const wrapper = createFieldWrapper(fd);
   wrapper.insertAdjacentElement("afterbegin", createInput(fd));
   return wrapper;
 }
 
+function updateRadio(wrapper, fd) {
+  const input = wrapper.querySelector('input');
+  updateInput(input, fd);
+}
+
 const createOutput = withFieldWrapper((fd) => {
   const output = document.createElement("output");
-  output.name = fd.Name;
-  output.dataset.fieldset = fd.Fieldset ? fd.Fieldset : "";
-  output.innerText = fd.Value;
+  updateOutputElement(output, fd);
   return output;
 });
 
+const updateOutput = function(fieldWrapper, fd) {
+  const output = fieldWrapper.querySelector('output');
+  updateOutputElement(output, fd);
+};
+
+const updateOutputElement = function(output, fd) {
+  output.name = fd.Name;
+  output.dataset.fieldset = fd.Fieldset ? fd.Fieldset : "";
+  output.innerText = fd.Value;
+};
+
 function createHidden(fd) {
   const input = document.createElement("input");
+  updateHidden(input, fd);
+  return input;
+}
+
+function updateHidden(input, fd) {
   input.type = "hidden";
   input.id = fd.Id;
   input.name = fd.Name;
   input.value = fd.Value;
-  return input;
 }
 
 function createLegend(fd) {
@@ -184,11 +239,15 @@ function createLegend(fd) {
 
 function createFieldSet(fd) {
   const wrapper = createFieldWrapper(fd, "fieldset");
+  updateFieldSet(wrapper, fd);
+  //   wrapper.replaceChildren(createLegend(fd));
+  return wrapper;
+}
+
+function updateFieldSet(wrapper, fd) {
   wrapper.setAttribute('itemtype', 'container');
   wrapper.setAttribute('data-editor-behavior', 'component');
   wrapper.name = fd.Name;
-  //   wrapper.replaceChildren(createLegend(fd));
-  return wrapper;
 }
 
 function groupFieldsByFieldSet(form) {
@@ -206,11 +265,15 @@ function groupFieldsByFieldSet(form) {
 
 function createPlainText(fd) {
   const paragraph = document.createElement("p");
+  updatePlainText(paragraph, fd);
+  return paragraph;
+}
+
+function updatePlainText(paragraph, fd) {
   const nameStyle = fd.Name ? `form-${fd.Name}` : "";
   paragraph.className = nameStyle;
   paragraph.dataset.fieldset = fd.Fieldset ? fd.Fieldset : "";
   paragraph.textContent = fd.Label;
-  return paragraph;
 }
 
 const getId = (function getId() {
@@ -236,6 +299,19 @@ const fieldRenderers = {
   plaintext: createPlainText,
 };
 
+const fieldUpdaters = {
+  radio: updateRadio,
+  checkbox: updateRadio,
+  submit: updateButton,
+  textarea: updateTextArea,
+  select: updateSelect,
+  button: updateButton,
+  output: updateOutput,
+  hidden: updateHidden,
+  fieldset: updateFieldSet,
+  plaintext: updatePlainText,
+};
+
 function renderField(fd) {
   const renderer = fieldRenderers[fd.Type.toLowerCase()];
   let field;
@@ -251,15 +327,50 @@ function renderField(fd) {
   return field;
 }
 
+
+function updateField(fieldWrapper, fd) {
+  const updater = fieldUpdaters[fd.Type.toLowerCase()];
+  if (typeof updater === "function") {
+    updater(fieldWrapper, fd);
+  } else {
+    updateFieldWrapper(fieldWrapper, fd);
+    updateInput(fieldWrapper.querySelector('input'), fd);
+  }
+  if (fd.Description) {
+    updateHelpText(fieldWrapper, fd);
+  }
+  const input = fieldWrapper.querySelector("input,textarea,select");
+  if (fd.Type === "submit") {
+    updateErrorText(fieldWrapper, content);
+  }
+  if (fd.Mandatory && fd.Mandatory.toLowerCase() === "true") {
+    if (input !== null) {
+      input.setAttribute("required", "required");
+      updateErrorText(fieldWrapper, fd);
+    } else {
+      fieldWrapper.setAttribute("required", "required");
+    }
+  }
+}
+
 function createErrorText(fd) {
   const div = document.createElement("div");
   div.className = "field-required-error";
+  updateErrorTextElement(div, fd);
+  return div;
+}
+
+function updateErrorText(fieldWrapper, fd) {
+  const div = fieldWrapper.querySelector(".field-required-error");
+  updateErrorTextElement(div, fd);
+}
+
+function updateErrorTextElement(div, fd) {
   div.innerText =
     fd.Type === "submit"
       ? "Fill the required fields"
       : "This field is required";
   div.id = `${fd.Id}-error-text`;
-  return div;
 }
 
 async function fetchData(url) {
@@ -399,8 +510,10 @@ function loadUEScripts() {
    container.appendChild(renderField({ ...e.detail.component.plugins.fnk.form, "Id": id } ));
   },false);
   document.addEventListener("editor-update", function (e){
-    const itemids = e.detail.itemids;
+    ({itemids, element, content} = e.detail);
     console.log('itemids', itemids);
+    //TODO: required attribute handling
+    updateField(element, content);
   },false);
 }
 
