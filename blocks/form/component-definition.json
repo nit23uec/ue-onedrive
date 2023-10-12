@@ -397,8 +397,8 @@
                     }
                 },
                 {
-                    "title": "Check Box group",
-                    "id": "checkboxgroup",
+                    "title": "Check Box",
+                    "id": "checkboxinput",
                     "plugins": {
                         "fnk": {
                             "form": {
