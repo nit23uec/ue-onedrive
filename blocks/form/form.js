@@ -552,17 +552,12 @@ function loadUEScripts() {
   head.appendChild(componentDefinition);
   document.addEventListener("editor-add", function (e){
    const container = e.detail.container;
-   const itemidArray = e.detail.itemid.split(":");
-   const id = itemidArray[itemidArray.length - 1];
-   container.appendChild(renderField({ ...e.detail.component.plugins.fnk.form, "Id": id } ));
-  },false);
+   container.appendChild(renderField(e.detail.content));
+  }, false);
   document.addEventListener("editor-update", function (e){
     console.log(e.detail);
-    //({itemids, element, content} = e.detail);
-    //console.log('itemids', itemids);
-    //TODO: required attribute handling
     updateField(e.detail.element, e.detail.content);
-  },false);
+  }, false);
 }
 
 export default async function decorate(block) {
