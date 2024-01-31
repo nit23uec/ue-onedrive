@@ -136,8 +136,8 @@ function updateFieldWrapper(fieldWrapper, fd) {
   fieldWrapper.setAttribute('data-aue-type', 'component');
   fieldWrapper.setAttribute('data-aue-resource', generateItemId(fd.Id));
   fieldWrapper.setAttribute('itemscope', '');
-  fieldWrapper.setAttribute('data-editor-itemlabel', fd.Label || fd.Name);
-  fieldWrapper.setAttribute('data-editor-itemmodel', fd.Type);
+  fieldWrapper.setAttribute('data-aue-label', fd.Label || fd.Name);
+  fieldWrapper.setAttribute('data-aue-model', fd.Type);
   const nameStyle = fd.Name ? ` form-${fd.Name}` : "";
   const fieldId = `form-${fd.Type}-wrapper${nameStyle}`;
   fieldWrapper.className = fieldId;
@@ -275,7 +275,7 @@ function createFieldSet(fd) {
 
 function updateFieldSet(wrapper, fd) {
   wrapper.setAttribute('data-aue-type', 'container');
-  wrapper.setAttribute('data-editor-behavior', 'component');
+  wrapper.setAttribute('data-aue-behavior', 'component');
   wrapper.name = fd.Name;
 }
 
@@ -538,7 +538,7 @@ function generateItemId(id) {
 function loadUEScripts() {
   let head = document.getElementsByTagName('head')[0];
   var meta = document.createElement('meta');
-  meta.name = "urn:auecon:fnkconnection";
+  meta.name = "urn:adobe:aue:system:fnkconnection";
   meta.content = `fnk:${window.origin}`;
   head.appendChild(meta);
   let ueEmbedded = document.createElement("script");
