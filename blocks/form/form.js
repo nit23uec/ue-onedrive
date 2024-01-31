@@ -542,8 +542,8 @@ function loadUEScripts() {
   meta.content = `fnk:${window.origin}`;
   head.appendChild(meta);
   let ueEmbedded = document.createElement("script");
-  //ueEmbedded.src = "https://cdn.jsdelivr.net/gh/adobe/universal-editor-cors/dist/universal-editor-embedded.js";
-  ueEmbedded.src = `${window.origin}/blocks/form/universal-editor-embedded.js`;
+  ueEmbedded.src = "https://cdn.jsdelivr.net/gh/adobe/universal-editor-cors/dist/universal-editor-embedded.js";
+  //ueEmbedded.src = `${window.origin}/blocks/form/universal-editor-embedded.js`;
   ueEmbedded.async = true;
   head.appendChild(ueEmbedded);
   let componentDefinition = document.createElement("script");
