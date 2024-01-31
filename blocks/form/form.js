@@ -84,8 +84,8 @@ function removeRequiredTextSpan(label) {
 
 function updateLabelElement(label, fd) {
   label.textContent = fd.Label || "";
-  label.setAttribute('itemprop', 'Label');
-  label.setAttribute('itemtype', 'text');
+  label.setAttribute('data-aue-prop', 'Label');
+  label.setAttribute('data-aue-type', 'text');
   if (fd.Tooltip) {
     label.title = fd.Tooltip;
   }
@@ -119,8 +119,8 @@ function updateHelpText(fieldWrapper, fd) {
 
 function updateHelpTextElement(div, fd) {
   div.setAttribute("aria-live", "polite");
-  div.setAttribute('itemtype', 'text');
-  div.setAttribute('itemprop', 'Description');
+  div.setAttribute('data-aue-type', 'text');
+  div.setAttribute('data-aue-prop', 'Description');
   div.innerText = fd.Description;
   div.id = `${fd.Id}-description`;
 }
@@ -133,8 +133,8 @@ function createFieldWrapper(fd, tagName = "div") {
 }
 
 function updateFieldWrapper(fieldWrapper, fd) {
-  fieldWrapper.setAttribute('itemtype', 'component');
-  fieldWrapper.setAttribute('itemid', generateItemId(fd.Id));
+  fieldWrapper.setAttribute('data-aue-type', 'component');
+  fieldWrapper.setAttribute('data-aue-resource', generateItemId(fd.Id));
   fieldWrapper.setAttribute('itemscope', '');
   fieldWrapper.setAttribute('data-editor-itemlabel', fd.Label || fd.Name);
   fieldWrapper.setAttribute('data-editor-itemmodel', fd.Type);
@@ -274,7 +274,7 @@ function createFieldSet(fd) {
 }
 
 function updateFieldSet(wrapper, fd) {
-  wrapper.setAttribute('itemtype', 'container');
+  wrapper.setAttribute('data-aue-type', 'container');
   wrapper.setAttribute('data-editor-behavior', 'component');
   wrapper.name = fd.Name;
 }
@@ -565,8 +565,8 @@ export default async function decorate(block) {
   if (formLink) {
     loadUEScripts();
     const form = await createForm(formLink.href);
-    form.setAttribute('itemid', generateItemId());
-    form.setAttribute('itemtype', 'container');
+    form.setAttribute('data-aue-resource', generateItemId());
+    form.setAttribute('data-aue-type', 'container');
     form.setAttribute('itemscope', '');
     form.setAttribute('data-editor-itemlabel', "Form Container");
     form.setAttribute('data-editor-itemmodel', "form");
